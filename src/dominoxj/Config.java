@@ -1,0 +1,172 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2021 a10.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+package dominoxj;
+
+import javafx.collections.ObservableList;
+import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
+
+/**
+ * class for creaing custom options for <b>DominoXj</b> game
+ *
+ * @author a10
+ */
+public class Config extends Parent {
+
+    public static final String GAME_VERSION = "0.3.4";
+
+    public static final String IMAGE_DIR = "images/desktop/";
+
+    public static final int WINDOW_BORDER = 3; // on desktop platform
+    public static final int TITLE_BAR_HEIGHT = 19; // on desktop platform
+    public static final int SCREEN_WIDTH = 480;
+    public static final int SCREEN_HEIGHT = 720;
+
+    public static final int BONE_SIZE = 42;
+    public static final int BONE_BORDER = 2;
+    public static final int PEDDING_HEIGHT = (SCREEN_HEIGHT - BONE_SIZE * 14) / 2;
+    public static final int PEDDING_WIDTH = (SCREEN_WIDTH - (BONE_SIZE + BONE_BORDER) * 7) / 2;
+
+    public static final int IMAGE_BACKGROUND = 0;
+    public static final int IMAGE_TABLE = 1;
+    public static final int IMAGE_LOGO = 2;
+    public static final int IMAGE_GAMEOVER = 3;
+
+    public static final int IMAGE_BONE0 = 4;
+    public static final int IMAGE_BONE1 = 5;
+    public static final int IMAGE_BONE2 = 6;
+    public static final int IMAGE_BONE3 = 7;
+    public static final int IMAGE_BONE4 = 8;
+    public static final int IMAGE_BONE5 = 9;
+    public static final int IMAGE_BONE6 = 10;
+    public static final int IMAGE_REVERSE = 11;
+
+    public static final int SELECTED_BONE0 = 12;
+    public static final int SELECTED_BONE1 = 13;
+    public static final int SELECTED_BONE2 = 14;
+    public static final int SELECTED_BONE3 = 15;
+    public static final int SELECTED_BONE4 = 16;
+    public static final int SELECTED_BONE5 = 17;
+    public static final int SELECTED_BONE6 = 18;
+
+    public static final int SOUND_PLAY = 0;
+    public static final int SOUND_REMOVE = 1;
+    public static final int SOUND_SELECT = 2;
+    public static final int SOUND_START = 3;
+    public static final int SOUND_WIN = 4;
+
+    private static boolean randomizeGame = true;
+    private static String playerName = "X";
+
+    private static final String[] SOUND_NAMES = new String[]{
+        "sounds/play.mp3",
+        "sounds/remove.mp3",
+        "sounds/select.mp3",
+        "sounds/start.mp3",
+        "sounds/win.mp3",};
+
+    private static final String[] IMAGES_NAMES = new String[]{
+        "background.png",
+        "table.png",
+        "logo.png",
+        "gameover.png",
+        "bone/bone0.png",
+        "bone/bone1.png",
+        "bone/bone2.png",
+        "bone/bone3.png",
+        "bone/bone4.png",
+        "bone/bone5.png",
+        "bone/bone6.png",
+        "bone/reverse.png",
+        "selectedbone/bone0.png",
+        "selectedbone/bone1.png",
+        "selectedbone/bone2.png",
+        "selectedbone/bone3.png",
+        "selectedbone/bone4.png",
+        "selectedbone/bone5.png",
+        "selectedbone/bone6.png",};
+
+    private static final ObservableList<Image> images
+            = javafx.collections.FXCollections.<Image>observableArrayList();
+
+    private static final ObservableList<AudioClip> sounds
+            = javafx.collections.FXCollections.<AudioClip>observableArrayList();
+
+    public static ObservableList<Image> getImages() {
+        return images;
+    }
+
+    public static ObservableList<AudioClip> getSounds() {
+        return sounds;
+    }
+
+    public static void initialize() {
+        for (String imageName : IMAGES_NAMES) {
+            Image image = new Image(
+                    Config.class.getResourceAsStream(IMAGE_DIR + imageName)
+            );
+            if (image.isError()) {
+                System.out.println("Resource " + imageName + " not found");
+            }
+            images.add(image);
+        }
+        for (String soundName : SOUND_NAMES) {
+            AudioClip sound = new AudioClip(
+                    Config.class.getResource(soundName).toString());
+            sounds.add(sound);
+        }
+    }
+
+    /**
+     * @return the playerName
+     */
+    public static String getPlayerName() {
+        return playerName;
+    }
+
+    /**
+     * @param aPlayerName the playerName to set
+     */
+    public static void setPlayerName(String aPlayerName) {
+        playerName = aPlayerName;
+    }
+
+    /**
+     * @return the randomizeGame
+     */
+    public static boolean isRandomizeGame() {
+        return randomizeGame;
+    }
+
+    /**
+     * @param aRandomizeGame the randomizeGame to set
+     */
+    public static void setRandomizeGame(boolean aRandomizeGame) {
+        randomizeGame = aRandomizeGame;
+    }
+
+    Config() {
+    }
+}
