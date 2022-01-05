@@ -81,11 +81,11 @@ public class Config extends Parent {
     private static String playerName = "X";
 
     private static final String[] SOUND_NAMES = new String[]{
-        "sounds/play.mp3",
-        "sounds/remove.mp3",
-        "sounds/select.mp3",
-        "sounds/start.mp3",
-        "sounds/win.mp3",};
+        "sounds/play.wav",
+        "sounds/remove.wav",
+        "sounds/select.wav",
+        "sounds/start.wav",
+        "sounds/win.wav",};
 
     private static final String[] IMAGES_NAMES = new String[]{
         "background.png",

@@ -33,7 +33,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
@@ -204,11 +204,11 @@ public class Table extends Parent {
     private void gameEnd() {
         long endTime = (new Date()).getTime();
         long deltaTime = endTime - startTime;
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Win DominoXj");
-        alert.setHeaderText("Win!");
-        alert.setContentText("Score time = " + deltaTime + " ms");
-        alert.showAndWait();
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("Win DominoXj");
+//        alert.setHeaderText("Win!");
+//        alert.setContentText("Score time = " + deltaTime + " ms");
+//        alert.showAndWait();
         Config.getSounds().get(Config.SOUND_WIN).play(1.0);
         Main.getHightScore().checkHightScore(
                 deltaTime,

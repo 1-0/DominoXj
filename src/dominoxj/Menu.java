@@ -32,9 +32,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+//import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.ImageView;
@@ -96,17 +96,17 @@ public class Menu extends Parent {
         hightScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Best DominoXj");
-                Main.Score h = Main.getHightScore();
-                if (h.getBestTimeDelta() != 0) {
-                    alert.setHeaderText("HigthScore time: " + h.getString());
-                    alert.setContentText("try to bit");
-                } else {
-                    alert.setHeaderText("no hightscore time");
-                    alert.setContentText("try to pass game");
-                }
-                alert.showAndWait();
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                alert.setTitle("Best DominoXj");
+//                Main.Score h = Main.getHightScore();
+//                if (h.getBestTimeDelta() != 0) {
+//                    alert.setHeaderText("HigthScore time: " + h.getString());
+//                    alert.setContentText("try to bit");
+//                } else {
+//                    alert.setHeaderText("no hightscore time");
+//                    alert.setContentText("try to pass game");
+//                }
+//                alert.showAndWait();
             }
         });
 
@@ -116,15 +116,15 @@ public class Menu extends Parent {
         about.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("About DominoXj");
-                alert.setHeaderText("DominoXj game");
-                alert.setContentText("v." + Config.GAME_VERSION + "\n"
-                        + "Pick pair of domino bones sum 12 to remove\n"
-                        + "MIT License\n"
-                //                                 + "(c) a10 - Alexander Desyatnichenko"
-                );
-                alert.showAndWait();
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                alert.setTitle("About DominoXj");
+//                alert.setHeaderText("DominoXj game");
+//                alert.setContentText("v." + Config.GAME_VERSION + "\n"
+//                        + "Pick pair of domino bones sum 12 to remove\n"
+//                        + "MIT License\n"
+//                //                                 + "(c) a10 - Alexander Desyatnichenko"
+//                );
+//                alert.showAndWait();
             }
         });
 
@@ -134,14 +134,14 @@ public class Menu extends Parent {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Exit?");
-                alert.setHeaderText("Confirm Exit");
-                alert.setContentText("Exit application?");
-                alert.showAndWait();
-                if (alert.getResult() == ButtonType.OK) {
-                    System.exit(0);
-                }
+//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                alert.setTitle("Exit?");
+//                alert.setHeaderText("Confirm Exit");
+//                alert.setContentText("Exit application?");
+//                alert.showAndWait();
+//                if (alert.getResult() == ButtonType.OK) {
+//                    System.exit(0);
+//                }
             }
         });
 
