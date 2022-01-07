@@ -134,27 +134,12 @@ public class Menu extends Parent {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                jOptionPane.
-//                jOptionPane.setResizable(false);
-//                jOptionPane.setAlwaysOnTop(true);
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                alert.setTitle("Exit?");
-//                alert.setHeaderText("Confirm Exit");
-//                alert.setContentText("Exit application?");
-//                alert.showAndWait();
-//                if (alert.getResult() == ButtonType.OK) {
-//                    System.exit(0);
-//                }
-                
-                MainFrame.SwingDialog swingDialog;
-                swingDialog = new MainFrame.SwingDialog();
-                swingDialog.setLabel("Exit?");
-                swingDialog.setText("Do You want to exit?");
-                int res = swingDialog.getResult();
+                MainFrame.SwingDialog s = new MainFrame.SwingDialog("Do You want to exit?");
+                int res = s.res;
                 if (res==0) {
                     System.exit(0);
                 }
-//                System.out.println(swingDialog.getResult());
+                System.out.println(res);
             }
         });
 

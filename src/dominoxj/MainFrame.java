@@ -26,7 +26,7 @@ package dominoxj;
 import javafx.scene.Group;
 
 import java.awt.Dimension;
-//import javax.swing.ImageIcon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -90,10 +90,6 @@ public class MainFrame {
         }
     }
 
-    public static SwingDialog getSwingDialog() {
-        return (new SwingDialog());
-    }
-
     ;
     
     public static class SwingDialog {
@@ -101,22 +97,22 @@ public class MainFrame {
         JPanel panel = new JPanel();
         JLabel label = new JLabel();
         JLabel text = new JLabel();
+        String lll, ttt;
+        int res;
 
-        SwingDialog() {
-//            ImageIcon icon = new ImageIcon("new");
-            panel.setSize(new Dimension(150, 50));
+        SwingDialog(String l) {
+        ImageIcon icon = new ImageIcon();
+            //panel.setSize(new Dimension(150, 1));
             panel.setLayout(null);
-            label.setText("exiting");
+            label.setText(l);
             label.setVerticalAlignment(SwingConstants.BOTTOM);
 //            label.setBounds(20, 20, 200, 30);
             label.setHorizontalAlignment(SwingConstants.CENTER);
             panel.add(label);
-            text.setText("confirm exit?");
-            panel.add(text);
             UIManager.put("OptionPane.minimumSize", new Dimension(400, 200));
-//            int res = JOptionPane.showConfirmDialog(null, panel, "File",
-//                    JOptionPane.YES_NO_CANCEL_OPTION,
-//                    JOptionPane.PLAIN_MESSAGE, icon);
+            res = JOptionPane.showConfirmDialog(null, panel, l,
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, icon);
         }
 
         public void setLabel(String labelText) {
@@ -127,10 +123,10 @@ public class MainFrame {
             text.setText(newText);
         }
 
-        public int getResult() {
-            int res = JOptionPane.showConfirmDialog(null, panel, "exit",
+        public int getResult(String l,String t) {
+            int res = JOptionPane.showConfirmDialog(null, panel, ttt,
                     JOptionPane.YES_NO_OPTION,
-                    JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.QUESTION_MESSAGE);
             if (res == 0) {
                 System.out.println("Pressed YES");
             } else if (res == 1) {
