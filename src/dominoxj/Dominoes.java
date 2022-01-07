@@ -32,11 +32,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 
 /**
- * class for holding domino bones for <b>DominoXj</b> game
+ * class for holding dominoeses for <b>DominoXj</b> game
  *
  * @author a10
  */
-public final class Bone extends Parent {
+public final class Dominoes extends Parent {
 
     public static final int STATE_REVERSED = 0;
     public static final int STATE_OPENED = 1;
@@ -50,7 +50,7 @@ public final class Bone extends Parent {
     private ImageView imageView1 = null, imageView2 = null;
     private int posX, posY, value1, value2, value;
 
-    Bone(int X, int Y, int v1, int v2, int s, Table t) {
+    Dominoes(int X, int Y, int v1, int v2, int s, Table t) {
         table = t;
         setValue(v1, v2);
         setState(s);
@@ -68,9 +68,9 @@ public final class Bone extends Parent {
             case STATE_OPENED:
                 Config.getSounds().get(Config.SOUND_SELECT).play(0.5);
                 image1 = Config.getImages().get(
-                        Config.IMAGE_BONE0 + value1);
+                        Config.IMAGE_DOMINOES0 + value1);
                 image2 = Config.getImages().get(
-                        Config.IMAGE_BONE0 + value2);
+                        Config.IMAGE_DOMINOES0 + value2);
 
                 if (imageView1 == null) {
                     imageView1 = new ImageView();
@@ -85,13 +85,13 @@ public final class Bone extends Parent {
             case STATE_SELECTED:
                 Config.getSounds().get(Config.SOUND_SELECT).play(0.7);
                 image1 = Config.getImages().get(
-                        Config.SELECTED_BONE0 + value1);
+                        Config.SELECTED_DOMINOES0 + value1);
                 image2 = Config.getImages().get(
-                        Config.SELECTED_BONE0 + value2);
+                        Config.SELECTED_DOMINOES0 + value2);
                 break;
             case STATE_REVERSED:
-                image1 = Config.getImages().get(Config.IMAGE_REVERSE);
-                image2 = Config.getImages().get(Config.IMAGE_REVERSE);
+                image1 = Config.getImages().get(Config.IMAGE_DOMINOES_REVERSE);
+                image2 = Config.getImages().get(Config.IMAGE_DOMINOES_REVERSE);
                 if (imageView1 == null) {
                     imageView1 = new ImageView();
                     imageView2 = new ImageView();
@@ -128,16 +128,16 @@ public final class Bone extends Parent {
     }
 
     private void checkDown(int x, int y) {
-        Bone b;
-        b = table.getBone(x, y + 1);
+        Dominoes b;
+        b = table.getDominoes(x, y + 1);
         if ((b.getState() == STATE_REVERSED)
                 && ((x == 0)
-                || (table.getBone(x - 1, y).getState() == STATE_REMOVED))) {
+                || (table.getDominoes(x - 1, y).getState() == STATE_REMOVED))) {
             b.setState(STATE_OPENED);
         }
-        b = table.getBone(x + 1, y + 1);
+        b = table.getDominoes(x + 1, y + 1);
         if (b.getState() == STATE_REVERSED) {
-            if ((x == y) || (table.getBone(x + 1, y).getState() == STATE_REMOVED)) {
+            if ((x == y) || (table.getDominoes(x + 1, y).getState() == STATE_REMOVED)) {
                 b.setState(STATE_OPENED);
             }
         }
@@ -145,14 +145,14 @@ public final class Bone extends Parent {
 
     private void checkUp(int x, int y) {
         if ((x > 0)
-                && (table.getBone(x - 1, y).getState() == STATE_REMOVED)
-                && (table.getBone(x - 1, y - 1).getState() == STATE_REVERSED)) {
-            table.getBone(x - 1, y - 1).setState(STATE_OPENED);
+                && (table.getDominoes(x - 1, y).getState() == STATE_REMOVED)
+                && (table.getDominoes(x - 1, y - 1).getState() == STATE_REVERSED)) {
+            table.getDominoes(x - 1, y - 1).setState(STATE_OPENED);
         }
         if ((x < y)
-                && ((table.getBone(x + 1, y).getState() == STATE_REMOVED)
-                && (table.getBone(x, y - 1).getState() == STATE_REVERSED))) {
-            table.getBone(x, y - 1).setState(STATE_OPENED);
+                && ((table.getDominoes(x + 1, y).getState() == STATE_REMOVED)
+                && (table.getDominoes(x, y - 1).getState() == STATE_REVERSED))) {
+            table.getDominoes(x, y - 1).setState(STATE_OPENED);
         }
     }
 
@@ -160,13 +160,13 @@ public final class Bone extends Parent {
         posX = X;
         posY = Y;
         int xx = (Config.PEDDING_WIDTH
-                + posX * (Config.BONE_SIZE + Config.BONE_BORDER)
-                + (6 - posY) * Config.BONE_SIZE / 2);
-        int yy = (Config.PEDDING_HEIGHT + posY * (Config.BONE_SIZE * 2));
+                + posX * (Config.DOMINOES_SIZE + Config.DOMINOES_BORDER)
+                + (6 - posY) * Config.DOMINOES_SIZE / 2);
+        int yy = (Config.PEDDING_HEIGHT + posY * (Config.DOMINOES_SIZE * 2));
         imageView1.setX(xx);
         imageView1.setY(yy);
         imageView2.setX(xx);
-        imageView2.setY(yy + Config.BONE_SIZE);
+        imageView2.setY(yy + Config.DOMINOES_SIZE);
     }
 
     public void setValue(int v1, int v2) {
@@ -210,14 +210,14 @@ public final class Bone extends Parent {
     }
 
     public void handleClick(MouseEvent event) {
-        bonePush();
+        dominoesPush();
     }
 
     public void handleTouch(TouchEvent event) {
-        bonePush();
+        dominoesPush();
     }
 
-    private void bonePush() {
+    private void dominoesPush() {
 //        System.out.printf("++posX=%d, posY=%d++, state=%d++\n", posX, posY, state);
         if (state == STATE_SELECTED) {
             table.setSelected();

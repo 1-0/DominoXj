@@ -53,7 +53,7 @@ import javafx.util.Duration;
 public class Menu extends Parent {
 //    private static final Logger LOG = Logger.getLogger(Menu.class.getName());
 
-    private static final MainFrame mainFrame = Main.getMainFrame();
+    public static MainFrame mainFrame = Main.getMainFrame();
     private Timeline timeline;
 
     Menu() {
@@ -120,7 +120,7 @@ public class Menu extends Parent {
 //                alert.setTitle("About DominoXj");
 //                alert.setHeaderText("DominoXj game");
 //                alert.setContentText("v." + Config.GAME_VERSION + "\n"
-//                        + "Pick pair of domino bones sum 12 to remove\n"
+//                        + "Pick pair of domino dominoeses sum 12 to remove\n"
 //                        + "MIT License\n"
 //                //                                 + "(c) a10 - Alexander Desyatnichenko"
 //                );
@@ -134,6 +134,9 @@ public class Menu extends Parent {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+//                jOptionPane.
+//                jOptionPane.setResizable(false);
+//                jOptionPane.setAlwaysOnTop(true);
 //                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 //                alert.setTitle("Exit?");
 //                alert.setHeaderText("Confirm Exit");
@@ -142,6 +145,10 @@ public class Menu extends Parent {
 //                if (alert.getResult() == ButtonType.OK) {
 //                    System.exit(0);
 //                }
+                
+                MainFrame.SwingDialog swingDialog;
+                swingDialog = new MainFrame.SwingDialog();
+                System.out.println(swingDialog.getResult());
             }
         });
 

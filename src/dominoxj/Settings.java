@@ -60,7 +60,7 @@ public class Settings extends Parent {
         Config.getSounds().get(Config.SOUND_START).play(1.0);
 
         background = new ImageView();
-        background.setImage(Config.getImages().get(Config.SELECTED_BONE5));
+        background.setImage(Config.getImages().get(Config.SELECTED_DOMINOES5));
 
         label = new Text("DominoXj settings");
         label.setFill(Color.AQUA);
@@ -102,7 +102,7 @@ public class Settings extends Parent {
         vBoxSettings = new VBox();
         vBoxSettings.setSpacing(10);
         vBoxSettings.setAlignment(Pos.TOP_CENTER);
-        vBoxSettings.setLayoutY(Config.BONE_SIZE * 2);
+        vBoxSettings.setLayoutY(Config.DOMINOES_SIZE * 2);
         vBoxSettings.setLayoutX(
                 (Config.SCREEN_WIDTH
                 - (int) label.getLayoutBounds().getWidth()) / 2
@@ -116,8 +116,8 @@ public class Settings extends Parent {
                 saveButton
         );
         getChildren().addAll(background, vBoxSettings);
-        background.setX(Config.SCREEN_WIDTH - Config.BONE_SIZE * 5);
-        background.setY(Config.SCREEN_HEIGHT - Config.BONE_SIZE * 5);
+        background.setX(Config.SCREEN_WIDTH - Config.DOMINOES_SIZE * 5);
+        background.setY(Config.SCREEN_HEIGHT - Config.DOMINOES_SIZE * 5);
         background.setScaleX(2);
         background.setScaleY(2);
         rotateTransition = create()

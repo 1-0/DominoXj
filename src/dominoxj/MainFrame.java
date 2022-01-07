@@ -25,6 +25,14 @@ package dominoxj;
 
 import javafx.scene.Group;
 
+import java.awt.Dimension;
+//import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
 /**
  * class for creaing main frame for <b>DominoXj</b> game
  *
@@ -81,4 +89,44 @@ public class MainFrame {
             settings.start();
         }
     }
+
+    public static SwingDialog getSwingDialog(){
+        return (new SwingDialog());
+    };
+    
+    
+    public static class SwingDialog {
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel();
+        
+        SwingDialog() {
+//            ImageIcon icon = new ImageIcon("new");
+            panel.setSize(new Dimension(150, 50));
+            panel.setLayout(null);
+            label.setText("exit?");
+            label.setVerticalAlignment(SwingConstants.BOTTOM);
+//            label.setBounds(20, 20, 200, 30);
+            label.setHorizontalAlignment(SwingConstants.CENTER);
+            panel.add(label);
+            UIManager.put("OptionPane.minimumSize", new Dimension(400, 200));
+//            int res = JOptionPane.showConfirmDialog(null, panel, "File",
+//                    JOptionPane.YES_NO_CANCEL_OPTION,
+//                    JOptionPane.PLAIN_MESSAGE, icon);
+        }
+        
+        public int getResult() {
+            int res = JOptionPane.showConfirmDialog(null, panel, "exit",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+            if (res == 0) {
+                System.out.println("Pressed YES");
+            } else if (res == 1) {
+                System.out.println("Pressed NO");
+            } else {
+                System.out.println("Pressed CANCEL");
+            }
+            return (res);
+        };
+    }
+
 }

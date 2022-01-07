@@ -61,8 +61,8 @@ public class Table extends Parent {
     }
 
     private int score = 0;
-    private Bone selectedBone = null;
-    private final Bone[] bones = new Bone[28];
+    private Dominoes selectedDominoes = null;
+    private final Dominoes[] dominoeses = new Dominoes[28];
     private final Group group;
     private final Text statistic;
     private final ProgressBar progressBar;
@@ -136,8 +136,8 @@ public class Table extends Parent {
         prepareGame();
 
         timeText = new Text("Now: ");
-        timeText.setX(Config.BONE_SIZE / 2);
-        timeText.setY(Config.SCREEN_HEIGHT - Config.BONE_SIZE / 2);
+        timeText.setX(Config.DOMINOES_SIZE / 2);
+        timeText.setY(Config.SCREEN_HEIGHT - Config.DOMINOES_SIZE / 2);
         setTimeText();
         getChildren().add(timeText);
 
@@ -155,18 +155,18 @@ public class Table extends Parent {
     }
 
     public void setSelected() {
-        selectedBone = null;
+        selectedDominoes = null;
     }
 
-    public void setSelected(Bone bone) {
-        selectedBone = bone;
+    public void setSelected(Dominoes dominoes) {
+        selectedDominoes = dominoes;
     }
 
     public int posToIndex(int x, int y) {
         int i;
-        Bone b;
+        Dominoes b;
         for (i = 0; i < 28; ++i) {
-            b = bones[i];
+            b = dominoeses[i];
             if ((b.getPositionX() == x) && ((b.getPositionY() == y))) {
                 return i;
             }
@@ -174,8 +174,8 @@ public class Table extends Parent {
         return i;
     }
 
-    public Bone getSelected() {
-        return (selectedBone);
+    public Dominoes getSelected() {
+        return (selectedDominoes);
     }
 
     public void addScore(int x) {
@@ -192,9 +192,9 @@ public class Table extends Parent {
         }
     }
 
-    public Bone getBone(int x, int y) {
+    public Dominoes getDominoes(int x, int y) {
         int i = posToIndex(x, y);
-        return (bones[i]);
+        return (dominoeses[i]);
     }
 
     public Group getGroup() {
@@ -220,7 +220,7 @@ public class Table extends Parent {
     }
 
     private void prepareGame() {
-        Bone bone;
+        Dominoes dominoes;
         int state;
         int[] xIndexes = new int[28],
                 yIndexes = new int[28];
@@ -228,8 +228,8 @@ public class Table extends Parent {
         int i = 0;
         for (int x = 0; x < 7; ++x) {
             for (int y = 0; y < x + 1; ++y) {
-                state = Bone.STATE_REVERSED;
-                bone = new Bone(
+                state = Dominoes.STATE_REVERSED;
+                dominoes = new Dominoes(
                         6 - x,
                         6 - y,
                         x,
@@ -239,7 +239,7 @@ public class Table extends Parent {
                 );
                 xIndexes[i] = x;
                 yIndexes[i] = y;
-                bones[i] = bone;
+                dominoeses[i] = dominoes;
                 taked[i] = true;
                 ++i;
             }
@@ -268,9 +268,9 @@ public class Table extends Parent {
                     i = n; // without sorting
                 }
                 if (taked[i]) {
-                    bones[n].setValue(xIndexes[i], yIndexes[i]);
-                    if (bones[n].getPositionY() == 0 || bones[n].getPositionY() == 6) {
-                        bones[n].setState(Bone.STATE_OPENED);
+                    dominoeses[n].setValue(xIndexes[i], yIndexes[i]);
+                    if (dominoeses[n].getPositionY() == 0 || dominoeses[n].getPositionY() == 6) {
+                        dominoeses[n].setState(Dominoes.STATE_OPENED);
                     }
                     taked[i] = false;
                     t = false;

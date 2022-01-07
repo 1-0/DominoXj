@@ -35,7 +35,7 @@ import javafx.scene.media.AudioClip;
  */
 public class Config extends Parent {
 
-    public static final String GAME_VERSION = "0.3.4";
+    public static final String GAME_VERSION = "0.3.6";
 
     public static final String IMAGE_DIR = "images/desktop/";
 
@@ -44,32 +44,32 @@ public class Config extends Parent {
     public static final int SCREEN_WIDTH = 480;
     public static final int SCREEN_HEIGHT = 720;
 
-    public static final int BONE_SIZE = 42;
-    public static final int BONE_BORDER = 2;
-    public static final int PEDDING_HEIGHT = (SCREEN_HEIGHT - BONE_SIZE * 14) / 2;
-    public static final int PEDDING_WIDTH = (SCREEN_WIDTH - (BONE_SIZE + BONE_BORDER) * 7) / 2;
+    public static final int DOMINOES_SIZE = 42;
+    public static final int DOMINOES_BORDER = 2;
+    public static final int PEDDING_HEIGHT = (SCREEN_HEIGHT - DOMINOES_SIZE * 14) / 2;
+    public static final int PEDDING_WIDTH = (SCREEN_WIDTH - (DOMINOES_SIZE + DOMINOES_BORDER) * 7) / 2;
 
     public static final int IMAGE_BACKGROUND = 0;
     public static final int IMAGE_TABLE = 1;
     public static final int IMAGE_LOGO = 2;
     public static final int IMAGE_GAMEOVER = 3;
 
-    public static final int IMAGE_BONE0 = 4;
-    public static final int IMAGE_BONE1 = 5;
-    public static final int IMAGE_BONE2 = 6;
-    public static final int IMAGE_BONE3 = 7;
-    public static final int IMAGE_BONE4 = 8;
-    public static final int IMAGE_BONE5 = 9;
-    public static final int IMAGE_BONE6 = 10;
-    public static final int IMAGE_REVERSE = 11;
+    public static final int IMAGE_DOMINOES0 = 4;
+    public static final int IMAGE_DOMINOES1 = 5;
+    public static final int IMAGE_DOMINOES2 = 6;
+    public static final int IMAGE_DOMINOES3 = 7;
+    public static final int IMAGE_DOMINOES4 = 8;
+    public static final int IMAGE_DOMINOES5 = 9;
+    public static final int IMAGE_DOMINOES6 = 10;
+    public static final int IMAGE_DOMINOES_REVERSE = 11;
 
-    public static final int SELECTED_BONE0 = 12;
-    public static final int SELECTED_BONE1 = 13;
-    public static final int SELECTED_BONE2 = 14;
-    public static final int SELECTED_BONE3 = 15;
-    public static final int SELECTED_BONE4 = 16;
-    public static final int SELECTED_BONE5 = 17;
-    public static final int SELECTED_BONE6 = 18;
+    public static final int SELECTED_DOMINOES0 = 12;
+    public static final int SELECTED_DOMINOES1 = 13;
+    public static final int SELECTED_DOMINOES2 = 14;
+    public static final int SELECTED_DOMINOES3 = 15;
+    public static final int SELECTED_DOMINOES4 = 16;
+    public static final int SELECTED_DOMINOES5 = 17;
+    public static final int SELECTED_DOMINOES6 = 18;
 
     public static final int SOUND_PLAY = 0;
     public static final int SOUND_REMOVE = 1;
@@ -92,21 +92,21 @@ public class Config extends Parent {
         "table.png",
         "logo.png",
         "gameover.png",
-        "bone/bone0.png",
-        "bone/bone1.png",
-        "bone/bone2.png",
-        "bone/bone3.png",
-        "bone/bone4.png",
-        "bone/bone5.png",
-        "bone/bone6.png",
-        "bone/reverse.png",
-        "selectedbone/bone0.png",
-        "selectedbone/bone1.png",
-        "selectedbone/bone2.png",
-        "selectedbone/bone3.png",
-        "selectedbone/bone4.png",
-        "selectedbone/bone5.png",
-        "selectedbone/bone6.png",};
+        "dominoes/dominoes0.png",
+        "dominoes/dominoes1.png",
+        "dominoes/dominoes2.png",
+        "dominoes/dominoes3.png",
+        "dominoes/dominoes4.png",
+        "dominoes/dominoes5.png",
+        "dominoes/dominoes6.png",
+        "dominoes/reverse.png",
+        "selecteddominoes/dominoes0.png",
+        "selecteddominoes/dominoes1.png",
+        "selecteddominoes/dominoes2.png",
+        "selecteddominoes/dominoes3.png",
+        "selecteddominoes/dominoes4.png",
+        "selecteddominoes/dominoes5.png",
+        "selecteddominoes/dominoes6.png",};
 
     private static final ObservableList<Image> images
             = javafx.collections.FXCollections.<Image>observableArrayList();
