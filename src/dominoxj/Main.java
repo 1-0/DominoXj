@@ -136,13 +136,16 @@ public class Main extends Application {
         }
 
         public String getString() {
-            String res = "\nbestTimeDistance = "
-                    + hightScore.getBestTimeDelta()
-                    + "(ms)\nbestTimeStart = "
-                    + (DateFormat.getDateTimeInstance().format(
-                            new Date(hightScore.getBestTimeStart())))
-                    + "\nbestPlayer = "
+            String res = hightScore.getBestTimeDelta()
+                    + "(ms) by "
                     + hightScore.getBestPlayer();
+//            String res = "\nbestTimeDistance = "
+//                    + hightScore.getBestTimeDelta()
+//                    + "(ms)\nbestTimeStart = "
+//                    + (DateFormat.getDateTimeInstance().format(
+//                            new Date(hightScore.getBestTimeStart())))
+//                    + "\nbestPlayer = "
+//                    + hightScore.getBestPlayer();
             return res;
         }
     }

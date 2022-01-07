@@ -66,7 +66,7 @@ public final class Dominoes extends Parent {
                 setRemoved();
                 return;
             case STATE_OPENED:
-                Config.getSounds().get(Config.SOUND_SELECT).play(0.5);
+                Config.getSounds().get(Config.SOUND_SELECT).play(0.1);
                 image1 = Config.getImages().get(
                         Config.IMAGE_DOMINOES0 + value1);
                 image2 = Config.getImages().get(
@@ -83,7 +83,7 @@ public final class Dominoes extends Parent {
                 imageView2.setCursor(Cursor.HAND);
                 break;
             case STATE_SELECTED:
-                Config.getSounds().get(Config.SOUND_SELECT).play(0.7);
+                Config.getSounds().get(Config.SOUND_SELECT).play(0.1);
                 image1 = Config.getImages().get(
                         Config.SELECTED_DOMINOES0 + value1);
                 image2 = Config.getImages().get(

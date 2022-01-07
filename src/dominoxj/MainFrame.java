@@ -90,53 +90,38 @@ public class MainFrame {
         }
     }
 
-    ;
-    
     public static class SwingDialog {
 
         JPanel panel = new JPanel();
         JLabel label = new JLabel();
         JLabel text = new JLabel();
-        String lll, ttt;
-        int res;
+        public static int TYPE_OK = 0;
+        public static int TYPE_YES_NO = 1;
 
-        SwingDialog(String l) {
-        ImageIcon icon = new ImageIcon();
-            //panel.setSize(new Dimension(150, 1));
+        SwingDialog() {
+            panel.setSize(new Dimension(200, 100));
             panel.setLayout(null);
-            label.setText(l);
             label.setVerticalAlignment(SwingConstants.BOTTOM);
-//            label.setBounds(20, 20, 200, 30);
+            label.setBounds(20, 20, 200, 60);
             label.setHorizontalAlignment(SwingConstants.CENTER);
             panel.add(label);
             UIManager.put("OptionPane.minimumSize", new Dimension(400, 200));
-            res = JOptionPane.showConfirmDialog(null, panel, l,
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE, icon);
         }
 
-        public void setLabel(String labelText) {
-            label.setText(labelText);
-        }
-
-        public void setText(String newText) {
-            text.setText(newText);
-        }
-
-        public int getResult(String l,String t) {
-            int res = JOptionPane.showConfirmDialog(null, panel, ttt,
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE);
-            if (res == 0) {
-                System.out.println("Pressed YES");
-            } else if (res == 1) {
-                System.out.println("Pressed NO");
+        public int getResult(String title, String text, int dialog) {
+            int res = 0;
+            label.setText(text);
+            if (dialog == TYPE_YES_NO) {
+                res = JOptionPane.showConfirmDialog(null, panel, title,
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
             } else {
-                System.out.println("Pressed CANCEL");
+                res = JOptionPane.showConfirmDialog(null, panel, title,
+                        JOptionPane.CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE);
             }
             return (res);
         }
     ;
 }
-
 }

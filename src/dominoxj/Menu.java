@@ -96,17 +96,19 @@ public class Menu extends Parent {
         hightScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("Best DominoXj");
-//                Main.Score h = Main.getHightScore();
-//                if (h.getBestTimeDelta() != 0) {
-//                    alert.setHeaderText("HigthScore time: " + h.getString());
-//                    alert.setContentText("try to bit");
-//                } else {
-//                    alert.setHeaderText("no hightscore time");
-//                    alert.setContentText("try to pass game");
-//                }
-//                alert.showAndWait();
+                String s;
+                Main.Score h = Main.getHightScore();
+                MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
+                if (h.getBestTimeDelta() != 0) {
+                    s = "Time: " + h.getString();
+                } else {
+                    s = "try to pass game";
+                }
+                int res = dial.getResult(
+                        "Best DominoXj",
+                        s,
+                        MainFrame.SwingDialog.TYPE_OK
+                );
             }
         });
 
@@ -116,15 +118,12 @@ public class Menu extends Parent {
         about.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("About DominoXj");
-//                alert.setHeaderText("DominoXj game");
-//                alert.setContentText("v." + Config.GAME_VERSION + "\n"
-//                        + "Pick pair of domino dominoeses sum 12 to remove\n"
-//                        + "MIT License\n"
-//                //                                 + "(c) a10 - Alexander Desyatnichenko"
-//                );
-//                alert.showAndWait();
+                MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
+                int res = dial.getResult(
+                        "About DominoXj",
+                        "v." + Config.GAME_VERSION + " Pick pair of dominoeses",
+                        MainFrame.SwingDialog.TYPE_OK
+                );
             }
         });
 
@@ -134,9 +133,13 @@ public class Menu extends Parent {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MainFrame.SwingDialog s = new MainFrame.SwingDialog("Do You want to exit?");
-                int res = s.res;
-                if (res==0) {
+                MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
+                int res = dial.getResult(
+                        "Exit",
+                        "Do You want to exit?",
+                        MainFrame.SwingDialog.TYPE_YES_NO
+                );
+                if (res == 0) {
                     System.exit(0);
                 }
                 System.out.println(res);
