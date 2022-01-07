@@ -90,30 +90,43 @@ public class MainFrame {
         }
     }
 
-    public static SwingDialog getSwingDialog(){
+    public static SwingDialog getSwingDialog() {
         return (new SwingDialog());
-    };
-    
+    }
+
+    ;
     
     public static class SwingDialog {
+
         JPanel panel = new JPanel();
         JLabel label = new JLabel();
-        
+        JLabel text = new JLabel();
+
         SwingDialog() {
 //            ImageIcon icon = new ImageIcon("new");
             panel.setSize(new Dimension(150, 50));
             panel.setLayout(null);
-            label.setText("exit?");
+            label.setText("exiting");
             label.setVerticalAlignment(SwingConstants.BOTTOM);
 //            label.setBounds(20, 20, 200, 30);
             label.setHorizontalAlignment(SwingConstants.CENTER);
             panel.add(label);
+            text.setText("confirm exit?");
+            panel.add(text);
             UIManager.put("OptionPane.minimumSize", new Dimension(400, 200));
 //            int res = JOptionPane.showConfirmDialog(null, panel, "File",
 //                    JOptionPane.YES_NO_CANCEL_OPTION,
 //                    JOptionPane.PLAIN_MESSAGE, icon);
         }
-        
+
+        public void setLabel(String labelText) {
+            label.setText(labelText);
+        }
+
+        public void setText(String newText) {
+            text.setText(newText);
+        }
+
         public int getResult() {
             int res = JOptionPane.showConfirmDialog(null, panel, "exit",
                     JOptionPane.YES_NO_OPTION,
@@ -126,7 +139,8 @@ public class MainFrame {
                 System.out.println("Pressed CANCEL");
             }
             return (res);
-        };
-    }
+        }
+    ;
+}
 
 }

@@ -148,7 +148,13 @@ public class Menu extends Parent {
                 
                 MainFrame.SwingDialog swingDialog;
                 swingDialog = new MainFrame.SwingDialog();
-                System.out.println(swingDialog.getResult());
+                swingDialog.setLabel("Exit?");
+                swingDialog.setText("Do You want to exit?");
+                int res = swingDialog.getResult();
+                if (res==0) {
+                    System.exit(0);
+                }
+//                System.out.println(swingDialog.getResult());
             }
         });
 
