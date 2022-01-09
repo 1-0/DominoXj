@@ -75,10 +75,10 @@ public class Table extends Parent {
         VBox vBoxTable;
         RotateTransition rotateTransition;
 
-        Config.getSounds().get(Config.SOUND_PLAY).play(1.0);
+        Config.getSound(Config.SOUND_PLAY).play(1.0);
         background = new ImageView();
         background.setFocusTraversable(true);
-        background.setImage(Config.getImages().get(Config.IMAGE_TABLE));
+        background.setImage(Config.getImage(Config.IMAGE_TABLE));
 
         menu = new Button("Menu");
         menu.setTooltip(new Tooltip("Return to DominoXj start menu"));
@@ -100,7 +100,6 @@ public class Table extends Parent {
             }
         });
 
-//        statistic = new Text("Score: " + score);
         statistic = new Text("Progress:");
         statistic.setFill(Color.AQUA);
         statistic.setBoundsType(TextBoundsType.VISUAL);
@@ -183,10 +182,9 @@ public class Table extends Parent {
         double progress;
         progress = (score / 168.0);
         setTimeText();
-//        statistic.setText("Score: " + score);
         progressBar.setProgress(progress);
         progressBar.setTooltip(new Tooltip("Progress = " + ((int)(progress * 100)) + " %"));
-        Config.getSounds().get(Config.SOUND_REMOVE).play(0.9);
+        Config.getSound(Config.SOUND_REMOVE).play(0.9);
         if (score == 168) {
             gameEnd();
         }
@@ -204,12 +202,15 @@ public class Table extends Parent {
     private void gameEnd() {
         long endTime = (new Date()).getTime();
         long deltaTime = endTime - startTime;
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Win DominoXj");
-//        alert.setHeaderText("Win!");
-//        alert.setContentText("Score time = " + deltaTime + " ms");
-//        alert.showAndWait();
-        Config.getSounds().get(Config.SOUND_WIN).play(1.0);
+        group.setVisible(false);
+        MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
+        int res = dial.getResult(
+                "Win DominoXj!",
+                "Time: " + deltaTime,
+                MainFrame.SwingDialog.TYPE_OK
+        );
+        group.setVisible(true);
+        Config.getSound(Config.SOUND_WIN).play(1.0);
         Main.getHightScore().checkHightScore(
                 deltaTime,
                 startTime,
@@ -258,7 +259,6 @@ public class Table extends Parent {
         rotateTransition.play();
 
         Boolean t;
-
         for (int n = 0; n < 28; ++n) {
             t = true;
             while (t) {

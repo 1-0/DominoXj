@@ -54,6 +54,7 @@ public class Menu extends Parent {
 //    private static final Logger LOG = Logger.getLogger(Menu.class.getName());
 
     public static MainFrame mainFrame = Main.getMainFrame();
+    public static Group group;
     private Timeline timeline;
 
     Menu() {
@@ -63,10 +64,10 @@ public class Menu extends Parent {
         VBox vBoxMenu;
         RotateTransition rotateTransition, rotateTransition2;
 
-        Config.getSounds().get(Config.SOUND_START).play(1.0);
+        Config.getSound(Config.SOUND_START).play(1.0);
         background = new ImageView();
         background.setFocusTraversable(true);
-        background.setImage(Config.getImages().get(Config.IMAGE_BACKGROUND));
+        background.setImage(Config.getImage(Config.IMAGE_BACKGROUND));
 
         play = new Button("Play");
         play.setTooltip(new Tooltip("Start new game DominoXj"));
@@ -74,7 +75,6 @@ public class Menu extends Parent {
         play.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                System.out.println("Play...");
                 mainFrame.changeState(MainFrame.TABLE);
             }
         });
@@ -97,7 +97,8 @@ public class Menu extends Parent {
             @Override
             public void handle(ActionEvent event) {
                 String s;
-                Main.Score h = Main.getHightScore();
+                Score h = Main.getHightScore();
+                group.setVisible(false);
                 MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
                 if (h.getBestTimeDelta() != 0) {
                     s = "Time: " + h.getString();
@@ -109,6 +110,7 @@ public class Menu extends Parent {
                         s,
                         MainFrame.SwingDialog.TYPE_OK
                 );
+                group.setVisible(true);
             }
         });
 
@@ -118,12 +120,14 @@ public class Menu extends Parent {
         about.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                group.setVisible(false);
                 MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
                 int res = dial.getResult(
                         "About DominoXj",
                         "v." + Config.GAME_VERSION + " Pick pair of dominoeses",
                         MainFrame.SwingDialog.TYPE_OK
                 );
+                group.setVisible(true);
             }
         });
 
@@ -189,8 +193,7 @@ public class Menu extends Parent {
                 .autoReverse(true)
                 .build();
         rotateTransition2.play();
-
-        Group group = new Group();
+        group = new Group();
         group.getChildren().addAll(background, vBoxMenu);
         group.autosize();
         getChildren().add(group);

@@ -91,7 +91,6 @@ public class MainFrame {
     }
 
     public static class SwingDialog {
-
         JPanel panel = new JPanel();
         JLabel label = new JLabel();
         JLabel text = new JLabel();

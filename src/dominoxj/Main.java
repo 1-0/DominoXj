@@ -24,14 +24,14 @@
 package dominoxj;
 
 //import java.util.logging.Logger;
-import java.text.DateFormat;
-import java.util.Date;
+//import java.text.DateFormat;
+//import java.util.Date;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-//import javafx.stage.Window;
+import javafx.stage.Window;
 
 /**
  * class for entering in <b>DominoXj</b> game
@@ -40,7 +40,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-//    private static Window mainWindow;
+    private static Window mainWindow;
     private static MainFrame mainFrame;
     private static Score hightScore = null;
 //    private static final Logger LOG = Logger.getLogger(Main.class.getName());
@@ -49,9 +49,10 @@ public class Main extends Application {
         return mainFrame;
     }
 
-//    public static Window getMainWindow() {
-//        return mainWindow;
-//    }
+    public static Window getMainWindow() {
+        return mainWindow;
+    }
+
     public static void main(String[] args) {
         Application.launch(args);
     }
@@ -63,9 +64,16 @@ public class Main extends Application {
         return hightScore;
     }
 
+    /**
+     * @param aHightScore the hightScore to set
+     */
+    public static void setHightScore(Score aHightScore) {
+        hightScore = aHightScore;
+    }
+
     @Override
     public void start(Stage stage) {
-        hightScore = new Score();
+        setHightScore(new Score(this));
 //        mainWindow = stage.getOwner();
         Config.initialize();
         Group root = new Group();
@@ -81,72 +89,4 @@ public class Main extends Application {
         stage.show();
     }
 
-    public final class Score {
-
-        private long bestTimeDelta;
-        private long bestTimeStart;
-        private String bestPlayer;
-
-        Score() {
-            checkHightScore(0, 0, "");
-        }
-
-        public void setHightScore(
-                long timeDelta,
-                long timeStart,
-                String player
-        ) {
-            checkHightScore(timeDelta, timeStart, player);
-        }
-
-        public void checkHightScore(
-                long timeDelta,
-                long timeStart,
-                String player
-        ) {
-            if ((getHightScore() == null)
-                    || (bestTimeDelta == 0)
-                    || (bestTimeDelta > timeDelta)) {
-                bestTimeDelta = timeDelta;
-                bestTimeStart = timeStart;
-                bestPlayer = player;
-                hightScore = this;
-            }
-        }
-
-        /**
-         * @return the bestTimeDelta
-         */
-        public long getBestTimeDelta() {
-            return bestTimeDelta;
-        }
-
-        /**
-         * @return the bestTimeStart
-         */
-        public long getBestTimeStart() {
-            return bestTimeStart;
-        }
-
-        /**
-         * @return the bestPlayer
-         */
-        public String getBestPlayer() {
-            return bestPlayer;
-        }
-
-        public String getString() {
-            String res = hightScore.getBestTimeDelta()
-                    + "(ms) by "
-                    + hightScore.getBestPlayer();
-//            String res = "\nbestTimeDistance = "
-//                    + hightScore.getBestTimeDelta()
-//                    + "(ms)\nbestTimeStart = "
-//                    + (DateFormat.getDateTimeInstance().format(
-//                            new Date(hightScore.getBestTimeStart())))
-//                    + "\nbestPlayer = "
-//                    + hightScore.getBestPlayer();
-            return res;
-        }
-    }
 }

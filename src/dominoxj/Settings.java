@@ -57,10 +57,11 @@ public class Settings extends Parent {
         VBox vBoxSettings;
         ImageView background;
         RotateTransition rotateTransition;
-        Config.getSounds().get(Config.SOUND_START).play(1.0);
+        Config.getSound(Config.SOUND_START).play(1.0);
 
         background = new ImageView();
-        background.setImage(Config.getImages().get(Config.SELECTED_DOMINOES5));
+//        background.setImage(Config.getImages().get(Config.SELECTED_DOMINOES5));
+        background.setImage(Config.getImage(Config.SELECTED_DOMINOES5));
 
         label = new Text("DominoXj settings");
         label.setFill(Color.AQUA);

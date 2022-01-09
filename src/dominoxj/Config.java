@@ -79,6 +79,7 @@ public class Config extends Parent {
 
     private static boolean randomizeGame = true;
     private static String playerName = "X";
+    static Score[] scores = new Score[10];
 
     private static final String[] SOUND_NAMES = new String[]{
         "sounds/play.wav",
@@ -114,13 +115,17 @@ public class Config extends Parent {
     private static final ObservableList<AudioClip> sounds
             = javafx.collections.FXCollections.<AudioClip>observableArrayList();
 
-    public static ObservableList<Image> getImages() {
-        return images;
+    public static Image getImage(int imgId) {
+        return images.get(imgId);
     }
 
-    public static ObservableList<AudioClip> getSounds() {
-        return sounds;
+    public static AudioClip getSound(int sndId) {
+        return sounds.get(sndId);
     }
+//
+//    public static ObservableList<AudioClip> getSounds1() {
+//        return sounds;
+//    }
 
     public static void initialize() {
         for (String imageName : IMAGES_NAMES) {

@@ -66,10 +66,10 @@ public final class Dominoes extends Parent {
                 setRemoved();
                 return;
             case STATE_OPENED:
-                Config.getSounds().get(Config.SOUND_SELECT).play(0.1);
-                image1 = Config.getImages().get(
+                Config.getSound(Config.SOUND_SELECT).play(0.1);
+                image1 = Config.getImage(
                         Config.IMAGE_DOMINOES0 + value1);
-                image2 = Config.getImages().get(
+                image2 = Config.getImage(
                         Config.IMAGE_DOMINOES0 + value2);
 
                 if (imageView1 == null) {
@@ -83,15 +83,15 @@ public final class Dominoes extends Parent {
                 imageView2.setCursor(Cursor.HAND);
                 break;
             case STATE_SELECTED:
-                Config.getSounds().get(Config.SOUND_SELECT).play(0.1);
-                image1 = Config.getImages().get(
+                Config.getSound(Config.SOUND_SELECT).play(0.1);
+                image1 = Config.getImage(
                         Config.SELECTED_DOMINOES0 + value1);
-                image2 = Config.getImages().get(
+                image2 = Config.getImage(
                         Config.SELECTED_DOMINOES0 + value2);
                 break;
             case STATE_REVERSED:
-                image1 = Config.getImages().get(Config.IMAGE_DOMINOES_REVERSE);
-                image2 = Config.getImages().get(Config.IMAGE_DOMINOES_REVERSE);
+                image1 = Config.getImage(Config.IMAGE_DOMINOES_REVERSE);
+                image2 = Config.getImage(Config.IMAGE_DOMINOES_REVERSE);
                 if (imageView1 == null) {
                     imageView1 = new ImageView();
                     imageView2 = new ImageView();
@@ -218,7 +218,6 @@ public final class Dominoes extends Parent {
     }
 
     private void dominoesPush() {
-//        System.out.printf("++posX=%d, posY=%d++, state=%d++\n", posX, posY, state);
         if (state == STATE_SELECTED) {
             table.setSelected();
             setState(STATE_OPENED);
