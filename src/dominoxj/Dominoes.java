@@ -79,8 +79,6 @@ public final class Dominoes extends Parent {
                 setEvents();
                 imageView1.setCursor(Cursor.HAND);
                 imageView2.setCursor(Cursor.HAND);
-                imageView1.setCursor(Cursor.HAND);
-                imageView2.setCursor(Cursor.HAND);
                 break;
             case STATE_SELECTED:
                 Config.getSound(Config.SOUND_SELECT).play(0.1);
@@ -185,36 +183,28 @@ public final class Dominoes extends Parent {
             imageView1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    handleClick(event);
+                    dominoesPush();
                 }
             });
             imageView2.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    handleClick(event);
+                    dominoesPush();
                 }
             });
             imageView1.setOnTouchReleased(new EventHandler<TouchEvent>() {
                 @Override
                 public void handle(TouchEvent event) {
-                    handleTouch(event);
+                            dominoesPush();
                 }
             });
             imageView2.setOnTouchReleased(new EventHandler<TouchEvent>() {
                 @Override
                 public void handle(TouchEvent event) {
-                    handleTouch(event);
+                    dominoesPush();
                 }
             });
         }
-    }
-
-    public void handleClick(MouseEvent event) {
-        dominoesPush();
-    }
-
-    public void handleTouch(TouchEvent event) {
-        dominoesPush();
     }
 
     private void dominoesPush() {
