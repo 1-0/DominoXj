@@ -24,7 +24,6 @@
 package dominoxj;
 
 import javafx.animation.RotateTransition;
-import static javafx.animation.RotateTransitionBuilder.create;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -60,7 +59,6 @@ public class Settings extends Parent {
         Config.getSound(Config.SOUND_START).play(1.0);
 
         background = new ImageView();
-//        background.setImage(Config.getImages().get(Config.SELECTED_DOMINOES5));
         background.setImage(Config.getImage(Config.SELECTED_DOMINOES5));
 
         label = new Text("DominoXj settings");
@@ -98,7 +96,6 @@ public class Settings extends Parent {
         
 
         setPlayer = new TextField(Config.getPlayerName());
-//        setPlayer.setFont(Font.font(Font.getDefault().getFamily(), 14));
         setPlayer.setTooltip(new Tooltip("Default player name"));
         vBoxSettings = new VBox();
         vBoxSettings.setSpacing(10);
@@ -121,14 +118,13 @@ public class Settings extends Parent {
         background.setY(Config.SCREEN_HEIGHT - Config.DOMINOES_SIZE * 5);
         background.setScaleX(2);
         background.setScaleY(2);
-        rotateTransition = create()
-                .node(background)
-                .duration(Duration.seconds(1))
-                .fromAngle(0)
-                .toAngle(725)
-                .cycleCount(1)
-                .autoReverse(true)
-                .build();
+        rotateTransition = new RotateTransition();
+        rotateTransition.setNode(background);
+        rotateTransition.setDuration(Duration.seconds(1));
+        rotateTransition.setFromAngle(0);
+        rotateTransition.setToAngle(725);
+        rotateTransition.setCycleCount(1);
+        rotateTransition.setAutoReverse(true);
         rotateTransition.play();
     }
 

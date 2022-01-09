@@ -26,14 +26,11 @@ package dominoxj;
 import java.text.DateFormat;
 import java.util.Date;
 import javafx.animation.RotateTransition;
-import static javafx.animation.RotateTransitionBuilder.create;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-//import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
@@ -104,15 +101,13 @@ public class Table extends Parent {
         statistic.setFill(Color.AQUA);
         statistic.setBoundsType(TextBoundsType.VISUAL);
         statistic.setFont(Font.font(Font.getDefault().getFamily(), 24));
-        rotateTransition = create()
-                .node(statistic)
-                .duration(Duration.seconds(1))
-                .fromAngle(0)
-                .toAngle(360)
-                .cycleCount(2)
-                .autoReverse(true)
-                .build();
-
+        rotateTransition = new RotateTransition();
+        rotateTransition.setNode(statistic);
+        rotateTransition.setDuration(Duration.seconds(1));
+        rotateTransition.setFromAngle(0);
+        rotateTransition.setToAngle(360);
+        rotateTransition.setCycleCount(2);
+        rotateTransition.setAutoReverse(true);
         rotateTransition.play();
         progressBar = new ProgressBar(0);
 
@@ -246,16 +241,13 @@ public class Table extends Parent {
             }
         };
 
-        RotateTransition rotateTransition;
-        rotateTransition = create()
-                .node(group)
-                .duration(Duration.seconds(1))
-                .fromAngle(0)
-                .toAngle(360)
-                .cycleCount(1)
-                .autoReverse(true)
-                .build();
-
+        RotateTransition rotateTransition = new RotateTransition();
+        rotateTransition.setNode(group);
+        rotateTransition.setDuration(Duration.seconds(1));
+        rotateTransition.setFromAngle(0);
+        rotateTransition.setToAngle(360);
+        rotateTransition.setCycleCount(1);
+        rotateTransition.setAutoReverse(true);
         rotateTransition.play();
 
         Boolean t;

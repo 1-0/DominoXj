@@ -25,16 +25,12 @@ package dominoxj;
 
 //import javax.swing.JOptionPane;
 import javafx.animation.RotateTransition;
-import static javafx.animation.RotateTransitionBuilder.create;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-//import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-//import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.ImageView;
@@ -55,7 +51,6 @@ public class Menu extends Parent {
 
     public static MainFrame mainFrame = Main.getMainFrame();
     public static Group group;
-    private Timeline timeline;
 
     Menu() {
         ImageView background;
@@ -154,14 +149,13 @@ public class Menu extends Parent {
         logo.setFill(Color.AQUAMARINE);
         logo.setBoundsType(TextBoundsType.VISUAL);
         logo.setFont(Font.font(Font.getDefault().getFamily(), 50));
-        rotateTransition = create()
-                .node(logo)
-                .duration(Duration.seconds(1))
-                .fromAngle(0)
-                .toAngle(10)
-                .cycleCount(6)
-                .autoReverse(true)
-                .build();
+        rotateTransition = new RotateTransition();
+        rotateTransition.setNode(logo);
+        rotateTransition.setDuration(Duration.seconds(1));
+        rotateTransition.setFromAngle(0);
+        rotateTransition.setToAngle(10);
+        rotateTransition.setCycleCount(6);
+        rotateTransition.setAutoReverse(true);
         rotateTransition.play();
 
         license = new Text("MIT License");
@@ -184,14 +178,13 @@ public class Menu extends Parent {
                 - (int) logo.getLayoutBounds().getWidth()) / 2
         );
         vBoxMenu.setLayoutY(Config.SCREEN_HEIGHT / 4);
-        rotateTransition2 = create()
-                .node(vBoxMenu)
-                .duration(Duration.seconds(1))
-                .fromAngle(0)
-                .toAngle(360)
-                .cycleCount(1)
-                .autoReverse(true)
-                .build();
+        rotateTransition2 = new RotateTransition();
+        rotateTransition2.setNode(vBoxMenu);
+        rotateTransition2.setDuration(Duration.seconds(1));
+        rotateTransition2.setFromAngle(0);
+        rotateTransition2.setToAngle(360);
+        rotateTransition2.setCycleCount(1);
+        rotateTransition2.setAutoReverse(true);
         rotateTransition2.play();
         group = new Group();
         group.getChildren().addAll(background, vBoxMenu);

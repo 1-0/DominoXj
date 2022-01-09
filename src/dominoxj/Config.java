@@ -35,7 +35,7 @@ import javafx.scene.media.AudioClip;
  */
 public class Config extends Parent {
 
-    public static final String GAME_VERSION = "0.3.6";
+    public static final String GAME_VERSION = "0.3.7";
 
     public static final String IMAGE_DIR = "images/desktop/";
 
@@ -122,10 +122,6 @@ public class Config extends Parent {
     public static AudioClip getSound(int sndId) {
         return sounds.get(sndId);
     }
-//
-//    public static ObservableList<AudioClip> getSounds1() {
-//        return sounds;
-//    }
 
     public static void initialize() {
         for (String imageName : IMAGES_NAMES) {
