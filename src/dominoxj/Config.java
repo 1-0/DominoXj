@@ -77,9 +77,10 @@ public class Config extends Parent {
     public static final int SOUND_START = 3;
     public static final int SOUND_WIN = 4;
 
+    public static final int HIGHTSCORES_LENGTH = 10;
     private static boolean randomizeGame = true;
     private static String playerName = "X";
-    static Score[] scores = new Score[10];
+    private static Score[] scores = new Score[HIGHTSCORES_LENGTH];
 
     private static final String[] SOUND_NAMES = new String[]{
         "sounds/play.wav",
@@ -123,6 +124,12 @@ public class Config extends Parent {
         return sounds.get(sndId);
     }
 
+    private static void initHigtscores() {
+        for (int i = 0; i < HIGHTSCORES_LENGTH; ++i) {
+            scores[i] = null;
+        }
+    }
+
     public static void initialize() {
         for (String imageName : IMAGES_NAMES) {
             Image image = new Image(
@@ -138,6 +145,7 @@ public class Config extends Parent {
                     Config.class.getResource(soundName).toString());
             sounds.add(sound);
         }
+        initHigtscores();
     }
 
     /**
@@ -166,6 +174,20 @@ public class Config extends Parent {
      */
     public static void setRandomizeGame(boolean aRandomizeGame) {
         randomizeGame = aRandomizeGame;
+    }
+
+    /**
+     * @return the scores
+     */
+    public static Score[] getScores() {
+        return scores;
+    }
+
+    /**
+     * @param aScores the scores to set
+     */
+    public static void setScores(Score[] aScores) {
+        scores = aScores;
     }
 
     Config() {

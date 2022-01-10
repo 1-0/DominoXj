@@ -43,10 +43,12 @@ public class MainFrame {
     public static final int MENU = 0;
     public static final int TABLE = 1;
     public static final int SETTINGS = 2;
+    public static final int HIGHTSCORES = 3;
     private final Group root;
     private Menu menu = null;
     private Table table = null;
     private Settings settings = null;
+    private Hightscores hightscores = null;
     private int state = MENU;
     private final Main outer;
 
@@ -66,6 +68,10 @@ public class MainFrame {
             if (settings != null) {
                 root.getChildren().remove(settings);
                 settings = null;
+            }
+            if (hightscores != null) {
+                root.getChildren().remove(hightscores);
+                hightscores = null;
             }
             root.getChildren().add(menu);
             menu.start();
@@ -87,6 +93,15 @@ public class MainFrame {
             }
             root.getChildren().add(settings);
             settings.start();
+        }
+        if (state == MainFrame.HIGHTSCORES) {
+            hightscores = new Hightscores();
+            if (menu != null) {
+                root.getChildren().remove(menu);
+                menu = null;
+            }
+            root.getChildren().add(hightscores);
+            hightscores.start();
         }
     }
 

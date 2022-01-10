@@ -195,7 +195,7 @@ public final class Dominoes extends Parent {
             imageView1.setOnTouchReleased(new EventHandler<TouchEvent>() {
                 @Override
                 public void handle(TouchEvent event) {
-                            dominoesPush();
+                    dominoesPush();
                 }
             });
             imageView2.setOnTouchReleased(new EventHandler<TouchEvent>() {

@@ -80,32 +80,34 @@ public class Menu extends Parent {
         settings.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Settings...");
+//                System.out.println("Settings...");
                 mainFrame.changeState(MainFrame.SETTINGS);
             }
         });
 
-        hightScore = new Button("Score");
-        hightScore.setTooltip(new Tooltip("Show DominoXj hightscore time"));
+        hightScore = new Button("Hightscores");
+        hightScore.setTooltip(new Tooltip("Show DominoXj hightscores time"));
         hightScore.setFont(Font.font(Font.getDefault().getFamily(), 24));
         hightScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String s;
-                Score h = Main.getHightScore();
-                group.setVisible(false);
-                MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
-                if (h.getBestTimeDelta() != 0) {
-                    s = "Time: " + h.getString();
-                } else {
-                    s = "try to pass game";
-                }
-                int res = dial.getResult(
-                        "Best DominoXj",
-                        s,
-                        MainFrame.SwingDialog.TYPE_OK
-                );
-                group.setVisible(true);
+                System.out.println("Hightscores...");
+                mainFrame.changeState(MainFrame.HIGHTSCORES);
+//                String s;
+//                Score h = Main.getHightScore();
+//                group.setVisible(false);
+//                MainFrame.SwingDialog dial = new MainFrame.SwingDialog();
+//                if (h.getBestTimeDelta() != 0) {
+//                    s = "Time: " + h.getString();
+//                } else {
+//                    s = "try to pass game";
+//                }
+//                int res = dial.getResult(
+//                        "Best DominoXj",
+//                        s,
+//                        MainFrame.SwingDialog.TYPE_OK
+//                );
+//                group.setVisible(true);
             }
         });
 
