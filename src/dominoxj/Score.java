@@ -23,65 +23,68 @@
  */
 package dominoxj;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  *
  * @author a10
  */
 public final class Score {
-    private long bestTimeDelta;
-    private long bestTimeStart;
-    private String bestPlayer;
-    private final Main outer;
 
-    Score(final Main outer) {
-        this.outer = outer;
-        checkHightScore(0, 0, "");
+    private long timeDelta;
+    private long timeStart;
+    private String player;
+
+    Score() {
+//        this.prepareScore(0, 0, "");
     }
 
-    public void setHightScore(long timeDelta, long timeStart, String player) {
-        checkHightScore(timeDelta, timeStart, player);
-    }
-
-    public void checkHightScore(long timeDelta, long timeStart, String player) {
-        if ((Main.getHightScore() == null) || (bestTimeDelta == 0) || (bestTimeDelta > timeDelta)) {
-            bestTimeDelta = timeDelta;
-            bestTimeStart = timeStart;
-            bestPlayer = player;
-            Main.setHightScore(this);
-        }
-    }
-
-    /**
-     * @return the bestTimeDelta
-     */
-    public long getBestTimeDelta() {
-        return bestTimeDelta;
-    }
-
-    /**
-     * @return the bestTimeStart
-     */
-    public long getBestTimeStart() {
-        return bestTimeStart;
-    }
-
-    /**
-     * @return the bestPlayer
-     */
-    public String getBestPlayer() {
-        return bestPlayer;
+    Score(long timeDelta, long timeStart, String player) {
+        prepareScore(timeDelta, timeStart, player);
     }
 
     public String getString() {
-        String res = Main.getHightScore().getBestTimeDelta() + "(ms) by " + Main.getHightScore().getBestPlayer();
-        //            String res = "\nbestTimeDistance = "
-        //                    + hightScore.getBestTimeDelta()
-        //                    + "(ms)\nbestTimeStart = "
-        //                    + (DateFormat.getDateTimeInstance().format(
-        //                            new Date(hightScore.getBestTimeStart())))
-        //                    + "\nbestPlayer = "
-        //                    + hightScore.getBestPlayer();
+//        String res = Main.getHightScore().getBestTimeDelta() + "(ms) by " + Main.getHightScore().getBestPlayer();
+        String res = "bestTimeDistance = "
+                + this.getTimeDelta()
+                + "(ms)bestTimeStart = "
+                + (DateFormat.getDateTimeInstance().format(
+                        new Date(this.getTimeStart())))
+                + "bestPlayer = "
+                + this.getPlayer();
         return res;
     }
-    
+
+    /**
+     * @return the timeDelta
+     */
+    public long getTimeDelta() {
+        return timeDelta;
+    }
+
+    /**
+     * @return the timeStart
+     */
+    public long getTimeStart() {
+        return timeStart;
+    }
+
+    /**
+     * @return the player
+     */
+    public String getPlayer() {
+        return player;
+    }
+
+    /**
+     * @param timeDelta
+     * @param timeStart
+     * @param player to set
+     */
+    public void prepareScore(long timeDelta, long timeStart, String player) {
+        this.timeDelta = timeDelta;
+        this.timeStart = timeStart;
+        this.player = player;
+    }
 }

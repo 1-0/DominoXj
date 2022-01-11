@@ -35,7 +35,7 @@ import javafx.scene.media.AudioClip;
  */
 public class Config extends Parent {
 
-    public static final String GAME_VERSION = "0.3.7";
+    public static final String GAME_VERSION = "0.4.2";
 
     public static final String IMAGE_DIR = "images/desktop/";
 
@@ -125,7 +125,7 @@ public class Config extends Parent {
     }
 
     private static void initHigtscores() {
-        for (int i = 0; i < HIGHTSCORES_LENGTH; ++i) {
+        for (int i = 0; i < HIGHTSCORES_LENGTH; i++) {
             scores[i] = null;
         }
     }
@@ -177,17 +177,19 @@ public class Config extends Parent {
     }
 
     /**
+     * @param position
      * @return the scores
      */
-    public static Score[] getScores() {
-        return scores;
+    public static Score getScore(int position) {
+        return scores[position];
     }
 
     /**
      * @param aScores the scores to set
+     * @param position
      */
-    public static void setScores(Score[] aScores) {
-        scores = aScores;
+    public static void setScore(Score aScores, int position) {
+        scores[position] = aScores;
     }
 
     Config() {

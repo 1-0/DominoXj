@@ -42,7 +42,6 @@ public class Main extends Application {
 
     private static Window mainWindow;
     private static MainFrame mainFrame;
-    private static Score hightScore = null;
 //    private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
     public static MainFrame getMainFrame() {
@@ -57,23 +56,8 @@ public class Main extends Application {
         Application.launch(args);
     }
 
-    /**
-     * @return the hightScore
-     */
-    public static Score getHightScore() {
-        return hightScore;
-    }
-
-    /**
-     * @param aHightScore the hightScore to set
-     */
-    public static void setHightScore(Score aHightScore) {
-        hightScore = aHightScore;
-    }
-
     @Override
     public void start(Stage stage) {
-        setHightScore(new Score(this));
 //        mainWindow = stage.getOwner();
         Config.initialize();
         Group root = new Group();

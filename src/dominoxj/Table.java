@@ -159,7 +159,7 @@ public class Table extends Parent {
     public int posToIndex(int x, int y) {
         int i;
         Dominoes b;
-        for (i = 0; i < 28; ++i) {
+        for (i = 0; i < 28; i++) {
             b = dominoeses[i];
             if ((b.getPositionX() == x) && ((b.getPositionY() == y))) {
                 return i;
@@ -206,11 +206,11 @@ public class Table extends Parent {
         );
         group.setVisible(true);
         Config.getSound(Config.SOUND_WIN).play(1.0);
-        Main.getHightScore().checkHightScore(
+        Hightscores.checkHightScores(new Score(
                 deltaTime,
                 startTime,
                 Config.getPlayerName()
-        );
+        ));
         getChildren().removeAll(group);
         mainFrame.changeState(MainFrame.TABLE);
     }
@@ -237,7 +237,7 @@ public class Table extends Parent {
                 yIndexes[i] = y;
                 dominoeses[i] = dominoes;
                 taked[i] = true;
-                ++i;
+                i++;
             }
         };
 
